@@ -1,6 +1,7 @@
 from datetime import datetime, date
 from sqlalchemy import Column, Integer, String, DateTime, Float, Boolean
-from model import Base  # به جای import کردن از app یا مسیرهای دیگر
+from model.entity.base import Base
+
 
 
 class Flight(Base):

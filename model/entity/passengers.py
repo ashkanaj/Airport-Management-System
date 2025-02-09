@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String
-from model import Base
+from model.entity.base import Base
+
 
 
 class Passenger(Base):
