@@ -1,6 +1,5 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, Column, Integer, String, Boolean
 from sqlalchemy.orm import sessionmaker, declarative_base
-from sqlalchemy import Column, Integer, String, Float, Boolean
 from datetime import datetime
 
 DATABASE_URL = "mysql+mysqlconnector://root:1234Abcd@localhost:3306/apm"
@@ -12,37 +11,37 @@ session = Session()
 
 
 class Base(declarative_base()):
-    __abstract__ = True
+    __abstract__ = True  # این خط برای جلوگیری از ساخت جدول برای کلاس Base ضروری است
 
     def __repr__(self):
         return str({c.name: getattr(self, c.name) for c in self.__table__.columns})
-
-    @classmethod
-    def save(cls, session):
-
-        if not cls.id:
-            session.add(cls)
-        session.commit()
-
-    @classmethod
-    def delete(cls, session):
-
-        session.delete(cls)
-        session.commit()
-
-    @classmethod
-    def update(cls, session, updates):
-
-        for field, value in updates.items():
-            setattr(cls, field, value)
-        session.commit()
 
 
 class Passenger(Base):
     __tablename__ = 'passengers'
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)  # اضافه کردن autoincrement
+    name = Column(String(255), index=True)  # اضافه کردن طول 255 به نوع String
     age = Column(Integer)
     is_checked_in = Column(Boolean, default=False)
 
+
+Base.metadata.create_all(bind=engine)
+
+new_passenger = Passenger(name="John Doe", age=30)
+
+session.add(new_passenger)
+session.commit()
+
+new_passenger.age = 31
+session.commit()
+
+session.delete(new_passenger)
+session.commit()
+
+passenger_to_delete = session.query(Passenger).filter(Passenger.name == "John Doe").first()
+if passenger_to_delete:
+    session.delete(passenger_to_delete)
+    session.commit()
+
+session.close()
