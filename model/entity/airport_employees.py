@@ -34,11 +34,9 @@ class AirportEmployees(Employee):
 
         parent_details = super().employee_details()
 
-
         additional_details = (
             f"🧳 Designation: {self.designation}\n"
             f"🏢 Department: {self.department}\n"
         )
-
 
         return parent_details + additional_details

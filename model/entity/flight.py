@@ -2,6 +2,7 @@ from datetime import datetime, date
 from sqlalchemy import Column, Integer, String, DateTime, Float, Boolean
 from model import Base  # به جای import کردن از app یا مسیرهای دیگر
 
+
 class Flight(Base):
     __tablename__ = 'flights'
 
@@ -17,7 +18,8 @@ class Flight(Base):
     _status = Column("status", String(50), default="Scheduled")
     _pilot = Column("pilot", String(100), nullable=True)
 
-    def __init__(self, flight_name, capacity, starting_time, reaching_time, source, destination, price, status="Scheduled", pilot=None, flight_id=None):
+    def __init__(self, flight_name, capacity, starting_time, reaching_time, source, destination, price,
+                 status="Scheduled", pilot=None, flight_id=None):
         self.flight_id = flight_id
         self.flight_name = flight_name
         self.capacity = capacity

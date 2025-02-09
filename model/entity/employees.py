@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float
 from model import Base
 
+
 class Employee(Base):
     __tablename__ = 'employees'
 
