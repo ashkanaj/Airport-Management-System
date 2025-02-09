@@ -1,22 +1,6 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy_utils import database_exists, create_database
-from model.entity.base import Base
+from sqlalchemy.orm import session
 
-# تنظیمات اتصال به دیتابیس
-connection_string = "mysql+pymysql://root:@localhost/apm"
-if not database_exists(connection_string):
-    create_database(connection_string)
 
-# ایجاد موتور و ارتباط با دیتابیس
-engine = create_engine(connection_string)
-Base.metadata.create_all(engine)
-
-# ساخت سشن برای انجام عملیات روی دیتابیس
-Session = sessionmaker(bind=engine)
-session = Session()
-
-# کلاس مدیریت عملیات دیتابیس با استفاده از SQLAlchemy
 class Database:
     def __init__(self, class_name):
         self.class_name = class_name
