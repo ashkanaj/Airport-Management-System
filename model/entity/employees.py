@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Float
-from model import Base
+from model.entity.base import Base
+
 
 
 class Employee(Base):
