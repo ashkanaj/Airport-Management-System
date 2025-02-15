@@ -1,6 +1,8 @@
 from sqlalchemy import create_engine, Column, Integer, String, Boolean
 from sqlalchemy.orm import sessionmaker, declarative_base
 from datetime import datetime
+from sqlalchemy.orm import declarative_base
+Base = declarative_base()
 
 DATABASE_URL = "mysql+mysqlconnector://root:1234Abcd@localhost:3306/apm"
 

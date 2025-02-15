@@ -1,5 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from model.entity.base import Base
+from sqlalchemy import Column, Integer, String, Boolean
+from model import Base
 
 
 

@@ -1,4 +1,4 @@
-from model.entity.passenger import Passenger
+from model.entity.passengers import Passenger
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 
