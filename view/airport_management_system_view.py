@@ -4,7 +4,7 @@ from model.service.airport_employee_service import AirportEmployeeService
 import model.service.passenger_service
 from model.service.ticket_service import TicketService
 
-# راه‌اندازی سرویس‌ها
+
 employee_service = AirportEmployeeService()
 passenger_service = model.service.passenger_service.PassengerService()
 ticket_service = TicketService()
@@ -17,7 +17,7 @@ class AirportManagementApp:
 
         self.tab_control = ttk.Notebook(root)
 
-        # ایجاد تب‌های مختلف
+
         self.employee_tab = ttk.Frame(self.tab_control)
         self.passenger_tab = ttk.Frame(self.tab_control)
         self.ticket_tab = ttk.Frame(self.tab_control)
@@ -32,7 +32,7 @@ class AirportManagementApp:
         self.setup_passenger_tab()
         self.setup_ticket_tab()
 
-    # -------------------- کارمندان -------------------- #
+
     def setup_employee_tab(self):
         ttk.Label(self.employee_tab, text="نام:").grid(row=0, column=0, padx=5, pady=5)
         ttk.Label(self.employee_tab, text="سمت:").grid(row=1, column=0, padx=5, pady=5)
@@ -146,7 +146,7 @@ class AirportManagementApp:
             ticket_service.book_ticket(int(passenger_id), destination)
             messagebox.showinfo("موفق", "بلیط با موفقیت صادر شد")
 
-# اجرای برنامه
+
 if __name__ == "__main__":
     root = tk.Tk()
     app = AirportManagementApp(root)
