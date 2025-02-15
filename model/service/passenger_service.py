@@ -1,10 +1,12 @@
-from repository.passenger_repository import PassengerRepository
 from sqlalchemy.orm import Session
+
+import model.repository.passenger_repository
+
 
 class PassengerService:
     def __init__(self, session: Session):
         self.session = session
-        self.repository = PassengerRepository(self.session)
+        self.repository = model.repository.passenger_repository.PassengerRepository(self.session)
 
     def create_passenger(self, name: str, age: int, ticket_id: int, luggage_id: int):
 

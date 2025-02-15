@@ -58,4 +58,3 @@ class PassengerRepository:
         except SQLAlchemyError as e:
             self.session.rollback()
             print(f"Error occurred while deleting passenger: {e}")
-            return False

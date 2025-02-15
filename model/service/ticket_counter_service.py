@@ -1,9 +1,10 @@
-from repository.ticket_counter_repository import TicketCounterRepository
+
 from sqlalchemy.orm import Session
 
 class TicketCounterService:
     def __init__(self, session: Session):
         self.session = session
+        from model.repository.ticket_counter_repository import TicketCounterRepository
         self.repository = TicketCounterRepository(self.session)
 
     def create_ticket(self, passenger_id: int, source: str, destination: str, price: float, flight_id: int):
