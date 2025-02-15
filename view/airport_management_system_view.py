@@ -11,6 +11,8 @@ ticket_service = TicketService()
 
 class AirportManagementApp:
     def __init__(self, root):
+        self.ticket_destination = None
+        self.ticket_passenger_id = ttk.Entry(self.ticket_tab)
         self.root = root
         self.root.title("Airport Management System")
         self.root.geometry("800x600")
@@ -131,7 +133,6 @@ class AirportManagementApp:
         ttk.Label(self.ticket_tab, text="ID مسافر:").grid(row=0, column=0, padx=5, pady=5)
         ttk.Label(self.ticket_tab, text="مقصد:").grid(row=1, column=0, padx=5, pady=5)
 
-        self.ticket_passenger_id = ttk.Entry(self.ticket_tab)
         self.ticket_destination = ttk.Entry(self.ticket_tab)
 
         self.ticket_passenger_id.grid(row=0, column=1, padx=5, pady=5)
