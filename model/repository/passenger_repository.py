@@ -8,7 +8,7 @@ class PassengerRepository:
 
     def create_passenger(self, name: str, age: int, ticket_id: int, luggage_id: int) -> Passenger:
         try:
-            new_passenger = Passenger(name=name, age=age, ticket_id=ticket_id, luggage_id=luggage_id)
+            new_passenger = Passenger(age=age, ticket_id=ticket_id, luggage_id=luggage_id)
             self.session.add(new_passenger)
             self.session.commit()
             return new_passenger
